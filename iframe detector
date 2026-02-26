@@ -1,4 +1,4 @@
-// 在浏览器 Console 粘贴运行
+// run in the Console 
 (function getIframesJSON(frame = document, depth = 0, parentId = null) {
   const iframes = frame.querySelectorAll("iframe");
   const result = [];
@@ -10,7 +10,7 @@
     const parentTag = f.parentElement.tagName;
     const nested = parentTag === "IFRAME";
 
-    // 简单 type 推断
+    // get type 
     let type = "unknown";
     if (id.toLowerCase().includes("lobby") || src.toLowerCase().includes("lobby")) type = "lobby";
     else if (id.toLowerCase().includes("case") || src.toLowerCase().includes("case")) type = "case";
@@ -29,14 +29,14 @@
 
     result.push(obj);
 
-    // 递归检查嵌套 iframe
+    // Recursively check nested iframes
     try {
       if (f.contentDocument) {
         const nestedFrames = getIframesJSON(f.contentDocument, depth + 1, id);
         result.push(...nestedFrames);
       }
     } catch (e) {
-      // 跨域 iframe 无法访问 contentDocument，会抛错
+      // Cross-domain iframes cannot access contentDocument and will throw an error.
       result.push({
         id,
         name,
