@@ -1,0 +1,54 @@
+// 在浏览器 Console 粘贴运行
+(function getIframesJSON(frame = document, depth = 0, parentId = null) {
+  const iframes = frame.querySelectorAll("iframe");
+  const result = [];
+
+  iframes.forEach(f => {
+    const id = f.id || "";
+    const name = f.name || "";
+    const src = f.src || "";
+    const parentTag = f.parentElement.tagName;
+    const nested = parentTag === "IFRAME";
+
+    // 简单 type 推断
+    let type = "unknown";
+    if (id.toLowerCase().includes("lobby") || src.toLowerCase().includes("lobby")) type = "lobby";
+    else if (id.toLowerCase().includes("case") || src.toLowerCase().includes("case")) type = "case";
+    else if (id.toLowerCase().includes("mail") || src.toLowerCase().includes("mail")) type = "mail";
+
+    const obj = {
+      id,
+      name,
+      src,
+      parentTag,
+      depth,
+      nested,
+      parentId,
+      type
+    };
+
+    result.push(obj);
+
+    // 递归检查嵌套 iframe
+    try {
+      if (f.contentDocument) {
+        const nestedFrames = getIframesJSON(f.contentDocument, depth + 1, id);
+        result.push(...nestedFrames);
+      }
+    } catch (e) {
+      // 跨域 iframe 无法访问 contentDocument，会抛错
+      result.push({
+        id,
+        name,
+        src,
+        parentTag,
+        depth: depth + 1,
+        nested: true,
+        parentId: id,
+        type: "cross-origin"
+      });
+    }
+  });
+
+  return result;
+})(document);
