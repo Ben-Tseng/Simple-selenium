@@ -9,11 +9,11 @@
     "default_title": "Auto Click"
   },
   "commands": {
-    "run-auto-click": {
+    "_execute_browser_action": {
       "suggested_key": {
         "default": "Alt+Shift+A"
       },
-      "description": "运行 Auto Click"
+      "description": "打开 Auto Click 弹窗"
     }
   },
   "content_scripts": [
@@ -24,8 +24,5 @@
       "all_frames": false
     }
   ],
-  "background": {
-    "scripts": ["background.js"]
-  },
   "permissions": ["activeTab", "storage", "tabs"]
 }
