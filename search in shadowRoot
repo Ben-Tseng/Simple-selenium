@@ -29,7 +29,7 @@ setTimeout(() => {
   } else {
     console.warn('❌ 未找到 Accept 元素');
   }
-}, 1000);
+}, 5000);
 
 // Accept：
 // 方法1：通过文字内容定位（最精准）
