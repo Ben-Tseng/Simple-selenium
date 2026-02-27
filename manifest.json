@@ -3,6 +3,19 @@
   "name": "Auto Click",
   "version": "1.0",
   "description": "自动点击 Increase Task 和 Accept",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png",
+    "default_title": "Auto Click"
+  },
+  "commands": {
+    "run-auto-click": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "运行 Auto Click"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["https://paragon-na.amazon.com/*"],
@@ -10,5 +23,9 @@
       "run_at": "document_idle",
       "all_frames": false
     }
-  ]
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["activeTab", "storage", "tabs"]
 }
