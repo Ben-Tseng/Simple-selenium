@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Auto Click",
+  "version": "1.0",
+  "description": "自动点击 Increase Task 和 Accept",
+  "content_scripts": [
+    {
+      "matches": ["https://paragon-na.amazon.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
