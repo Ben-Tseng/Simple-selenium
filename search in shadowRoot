@@ -19,10 +19,17 @@ function deepClick(selector) {
   }
 }
 
-// 执行
-deepClick('button.primary');
-// 或者更精准
 deepClick('.increase-button button');
+
+setTimeout(() => {
+  const acceptLink = [...document.querySelectorAll('a')].find(a => a.textContent.trim() === 'Accept');
+  if (acceptLink) {
+    acceptLink.click();
+    console.log('✅ 已点击 Accept');
+  } else {
+    console.warn('❌ 未找到 Accept 元素');
+  }
+}, 1000);
 
 // Accept：
 // 方法1：通过文字内容定位（最精准）
