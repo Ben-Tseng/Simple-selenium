@@ -23,3 +23,21 @@ function deepClick(selector) {
 deepClick('button.primary');
 // 或者更精准
 deepClick('.increase-button button');
+
+// Accept：
+// 方法1：通过文字内容定位（最精准）
+[...document.querySelectorAll('a')].find(a => a.textContent.trim() === 'Accept')?.click();
+
+// 方法2：通过父元素定位
+document.querySelector('.notification-action a')?.click();
+
+// 方法3：通过 notification-container 定位
+document.querySelector('.emaiBanner .notification-action a')?.click();
+
+//如果点击没反应（因为用的是事件监听而非跳转）
+const acceptBtn = document.querySelector('.notification-action a');
+acceptBtn.dispatchEvent(new MouseEvent('click', {
+  bubbles: true,
+  cancelable: true,
+  view: window
+}));
