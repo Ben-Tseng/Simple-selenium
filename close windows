@@ -1,0 +1,18 @@
+const selectAll = findSelectAllInPanel(panelRoot);
+if (!selectAll) throw new Error("Search 已点击，但找不到 Select all results。");
+selectAll.click();
+
+await sleep(200);
+
+// 自动退出小窗体（发送 Esc）
+const target = document.activeElement || document.body || document.documentElement;
+const escInit = {
+  key: "Escape",
+  code: "Escape",
+  keyCode: 27,
+  which: 27,
+  bubbles: true,
+  cancelable: true,
+};
+target.dispatchEvent(new KeyboardEvent("keydown", escInit));
+target.dispatchEvent(new KeyboardEvent("keyup", escInit));
