@@ -1,0 +1,47 @@
+function deepClick(selector) {
+  function search(root) {
+    const found = root.querySelector(selector);
+    if (found) return found;
+    for (const el of root.querySelectorAll('*')) {
+      if (el.shadowRoot) {
+        const result = search(el.shadowRoot);
+        if (result) return result;
+      }
+    }
+    return null;
+  }
+  const el = search(document);
+  if (el) {
+    el.click();
+    console.log('✅ 已点击:', el);
+  } else {
+    console.warn('❌ 未找到元素:', selector);
+  }
+}
+
+function runOnce(round) {
+  console.log(`🔄 第 ${round}/5 次执行`);
+
+  deepClick('.increase-button button');
+
+  setTimeout(() => {
+    const acceptLink = [...document.querySelectorAll('a')].find(a => a.textContent.trim() === 'Accept');
+    if (acceptLink) {
+      acceptLink.click();
+      console.log('✅ 已点击 Accept');
+    } else {
+      console.warn('❌ 未找到 Accept 元素');
+    }
+
+    // 本轮结束，5秒后执行下一轮
+    if (round < 5) {
+      console.log(`⏳ 等待 5 秒后执行第 ${round + 1} 次...`);
+      setTimeout(() => runOnce(round + 1), 5000);
+    } else {
+      console.log('🎉 全部 5 次执行完毕');
+    }
+  }, 1000);
+}
+
+// 启动
+runOnce(1);
