@@ -1,0 +1,25 @@
+function deepClick(selector) {
+  function search(root) {
+    const found = root.querySelector(selector);
+    if (found) return found;
+    for (const el of root.querySelectorAll('*')) {
+      if (el.shadowRoot) {
+        const result = search(el.shadowRoot);
+        if (result) return result;
+      }
+    }
+    return null;
+  }
+  const el = search(document);
+  if (el) {
+    el.click();
+    console.log('✅ 已点击:', el);
+  } else {
+    console.warn('❌ 未找到元素:', selector);
+  }
+}
+
+// 执行
+deepClick('button.primary');
+// 或者更精准
+deepClick('.increase-button button');
