@@ -45,12 +45,13 @@ function runRound() {
     if (acceptLink) {
       acceptLink.click();
       console.log('✅ 已点击 Accept');
+      await new Promise(r => setTimeout(r, 12000)); // 等待12秒
+
     } else {
       console.warn('❌ 未找到 Accept');
     }
   }, 6000);
   // 最简单的空等待
-  await new Promise(r => setTimeout(r, 12000)); // 等待12秒
 }
 
 // 监听来自 popup 或快捷键的消息
