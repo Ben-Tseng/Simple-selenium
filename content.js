@@ -48,7 +48,9 @@ function runRound() {
     } else {
       console.warn('❌ 未找到 Accept');
     }
-  }, 1000);
+  }, 6000);
+  // 最简单的空等待
+  await new Promise(r => setTimeout(r, 12000)); // 等待12秒
 }
 
 // 监听来自 popup 或快捷键的消息
