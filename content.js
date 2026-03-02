@@ -39,14 +39,18 @@ function runRound() {
     console.warn('❌ 未找到 Increase Task');
   }
 
+  async function delay(ms = 10000) {   // 默认10秒
+    return new Promise(r => setTimeout(r, ms));
+}
+
   setTimeout(() => {
     const acceptLink = [...document.querySelectorAll('a')]
       .find(a => a.textContent.trim() === 'Accept');
     if (acceptLink) {
       acceptLink.click();
       console.log('✅ 已点击 Accept');
-      await new Promise(r => setTimeout(r, 12000)); // 等待12秒
-
+      deplay();
+      
     } else {
       console.warn('❌ 未找到 Accept');
     }
