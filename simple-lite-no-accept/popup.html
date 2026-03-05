@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 220px;
+      padding: 16px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    h3 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      background: #0060df;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #0050bb;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h3>🖱️ Auto Click Lite</h3>
+  <input 
+    type="number" 
+    id="roundInput" 
+    min="1" 
+    max="99" 
+    value="5"
+  />
+  <button id="startBtn">▶ 开始点击 Increase</button>
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
