@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Tab Order Keyword Clicker",
+  "version": "1.0.0",
+  "description": "按Tab顺序扫描并点击 Workflow History/BIV/ID/LOA 目标",
+  "browser_action": {
+    "default_title": "Tab Keyword Clicker",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": ["tabs", "<all_urls>"]
+}
