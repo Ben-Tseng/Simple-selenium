@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Keyword Link Button Clicker Lite",
+  "version": "1.0.0",
+  "description": "输入关键词，遍历全部Tab；命中链接/按钮则点击（含iframe）",
+  "browser_action": {
+    "default_title": "Keyword Clicker Lite",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["tabs", "storage", "<all_urls>"]
+}

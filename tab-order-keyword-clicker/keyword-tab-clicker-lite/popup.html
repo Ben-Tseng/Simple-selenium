@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      width: 320px;
+      margin: 0;
+      padding: 12px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #222;
+    }
+    .label {
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 13px;
+    }
+    .row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    button {
+      flex: 1;
+      border: 0;
+      border-radius: 6px;
+      padding: 9px;
+      cursor: pointer;
+      color: #fff;
+      background: #1463ff;
+      font-size: 13px;
+    }
+    #status {
+      margin-top: 10px;
+      color: #333;
+      line-height: 1.4;
+      min-height: 18px;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <label class="label" for="keywordInput">Keyword</label>
+  <input id="keywordInput" type="text" placeholder="例如：WORKFLOW HISTORY" />
+
+  <div class="row">
+    <button id="saveBtn">保存关键词</button>
+    <button id="startBtn">开始扫描</button>
+  </div>
+
+  <div id="status">加载中...</div>
+  <script src="popup.js"></script>
+</body>
+</html>
